@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback - Ningbo Fasteners International Group</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+        body { background-color: #f9f9f9; color: #333; line-height: 1.6; }
+        .top-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        header { padding: 20px 0; border-bottom: 1px solid #eee; }
+        .header-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        .company-name { font-size: 36px; font-weight: bold; color: #000; text-decoration: none; }
+        .search-box { position: relative; }
+        .search-box input { padding: 8px 30px 8px 10px; border: 1px solid #ccc; border-radius: 4px; width: 220px; }
+        .search-box button { position: absolute; right: 5px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; font-size: 16px; }
+        .tagline { color: #0066cc; font-size: 16px; margin-top: 5px; }
+        nav { background-color: #003366; margin: 15px 0; }
+        .nav-menu { display: flex; list-style: none; }
+        .nav-menu li { position: relative; }
+        .nav-menu li a { display: block; padding: 12px 25px; color: #fff; text-decoration: none; font-size: 15px; font-weight: 500; transition: background 0.3s; }
+        .nav-menu li a:hover, .nav-menu li.active a { background-color: #002244; }
+        .nav-menu li .dropdown { position: absolute; top: 100%; left: 0; background-color: #003366; min-width: 200px; display: none; z-index: 999; }
+        .nav-menu li:hover .dropdown { display: block; }
+        .main { max-width: 1200px; margin: 30px auto; padding: 0 20px; }
+        .content { background: #fff; border: 1px solid #eee; border-radius: 8px; padding: 40px; max-width: 800px; margin: 0 auto; }
+        .page-title { font-size: 32px; color: #003366; margin-bottom: 10px; text-align: center; }
+        .subtitle { text-align: center; color: #666; margin-bottom: 30px; }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; color: #333; font-weight: 500; }
+        .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 4px; font-size: 15px; }
+        .form-group textarea { resize: vertical; min-height: 120px; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .btn-submit { background-color: #003366; color: #fff; padding: 14px 40px; border: none; border-radius: 4px; font-size: 16px; cursor: pointer; width: 100%; transition: background 0.3s; }
+        .btn-submit:hover { background-color: #002244; }
+        .contact-info { margin-top: 40px; padding-top: 30px; border-top: 1px solid #eee; text-align: center; }
+        .contact-info h3 { color: #003366; margin-bottom: 15px; }
+        .contact-info p { color: #666; margin-bottom: 8px; }
+        footer { background-color: #003366; color: #fff; padding: 30px 0; margin-top: 50px; }
+        .footer-content { max-width: 1200px; margin: 0 auto; padding: 0 20px; text-align: center; }
+        .footer-links { margin-bottom: 15px; }
+        .footer-links a { color: #fff; margin: 0 15px; text-decoration: none; font-size: 14px; }
+        @media (max-width: 576px) { .form-row { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <div class="top-container">
+        <header>
+            <div class="header-top">
+                <a href="index.html" class="company-name">Ningbo Fasteners International Group</a>
+                <div class="search-box">
+                    <input type="text" placeholder="Search...">
+                    <button>🔍</button>
+                </div>
+            </div>
+            <div class="tagline">Metal Products Specialists</div>
+        </header>
+    </div>
+
+    <nav>
+        <div class="top-container">
+            <ul class="nav-menu">
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="products.html">PRODUCT ▾</a>
+                    <ul class="dropdown">
+                        <li><a href="aisi-duplex.html">AISI & Duplex Fasteners</a></li>
+                        <li><a href="copper-brass.html">Copper & Brass Fasteners</a></li>
+                        <li><a href="titanium.html">Ti & Ti Alloy Fasteners</a></li>
+                        <li><a href="rivet.html">Rivet</a></li>
+                        <li><a href="standard.html">Standard Fasteners</a></li>
+                    </ul>
+                </li>
+                <li><a href="about.html">ABOUT US</a></li>
+                <li><a href="advantages.html">ADVANTAGES</a></li>
+                <li><a href="equipments.html">EQUIPMENTS</a></li>
+                <li><a href="links.html">LINKS</a></li>
+                <li class="active"><a href="feedback.html">FEEDBACK</a></li>
+                <li><a href="contact.html">CONTACT US</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="main">
+        <div class="content">
+            <h1 class="page-title">Send Us Feedback</h1>
+            <p class="subtitle">We value your opinion. Please share your thoughts with us.</p>
+            
+            <form>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Your Name *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="company">Company Name</label>
+                        <input type="text" id="company" name="company">
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject *</label>
+                        <select id="subject" name="subject" required>
+                            <option value="">Select a subject</option>
+                            <option value="product">Product Inquiry</option>
+                            <option value="service">Service Feedback</option>
+                            <option value="quality">Quality Feedback</option>
+                            <option value="suggestion">Suggestion</option>
+                            <option value="complaint">Complaint</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Your Message *</label>
+                    <textarea id="message" name="message" placeholder="Please describe your feedback in detail..." required></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit">Submit Feedback</button>
+            </form>
+
+            <div class="contact-info">
+                <h3>Other Ways to Reach Us</h3>
+                <p><strong>Email:</strong> feedback@ningbofasteners.com</p>
+                <p><strong>Phone:</strong> +86-574-XXXXXXXX</p>
+                <p><strong>Address:</strong> Ningbo, Zhejiang Province, China</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="products.html">Products</a>
+                <a href="about.html">About Us</a>
+                <a href="contact.html">Contact Us</a>
+            </div>
+            <div class="copyright">© 2025 Ningbo Fasteners International Group. All Rights Reserved.</div>
+        </div>
+    </footer>
+</body>
+</html>

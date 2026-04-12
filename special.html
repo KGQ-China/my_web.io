@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Fasteners - Ningbo Fasteners International Group</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .top-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            padding: 20px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .company-name {
+            font-size: 36px;
+            font-weight: bold;
+            color: #000;
+            text-decoration: none;
+        }
+
+        .search-box {
+            position: relative;
+        }
+
+        .search-box input {
+            padding: 8px 30px 8px 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 220px;
+        }
+
+        .search-box button {
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .tagline {
+            color: #0066cc;
+            font-size: 16px;
+            margin-top: 5px;
+        }
+
+        nav {
+            background-color: #003366;
+            margin: 15px 0;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-menu li {
+            position: relative;
+        }
+
+        .nav-menu li a {
+            display: block;
+            padding: 12px 25px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+
+        .nav-menu li a:hover,
+        .nav-menu li.active a {
+            background-color: #002244;
+        }
+
+        .nav-menu li .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #003366;
+            min-width: 200px;
+            display: none;
+            z-index: 999;
+        }
+
+        .nav-menu li:hover .dropdown {
+            display: block;
+        }
+
+        .nav-menu li .dropdown li a {
+            padding: 10px 20px;
+            border-bottom: 1px solid #002244;
+        }
+
+        .main {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+            display: flex;
+            gap: 30px;
+        }
+
+        .sidebar {
+            width: 280px;
+            background-color: #fff;
+            border: 1px solid #eee;
+            border-radius: 4px;
+        }
+
+        .sidebar-title {
+            background-color: #003366;
+            color: #fff;
+            padding: 12px 15px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .category-list {
+            list-style: none;
+        }
+
+        .category-list li a {
+            display: block;
+            padding: 12px 15px;
+            color: #333;
+            text-decoration: none;
+            border-bottom: 1px solid #f0f0f0;
+            transition: background 0.3s;
+        }
+
+        .category-list li a:hover,
+        .category-list li.active a {
+            background-color: #f5f5f5;
+            color: #0066cc;
+        }
+
+        .content {
+            flex: 1;
+            background-color: #fff;
+            border: 1px solid #eee;
+            border-radius: 4px;
+            padding: 30px;
+        }
+
+        .page-title {
+            font-size: 28px;
+            color: #003366;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #003366;
+        }
+
+        .intro-section {
+            margin-bottom: 30px;
+        }
+
+        .intro-section h2 {
+            color: #003366;
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+
+        .intro-section p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .feature-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #9b59b6;
+        }
+
+        .feature-card h3 {
+            color: #9b59b6;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .feature-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .feature-card ul li {
+            padding: 5px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .feature-card ul li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        .products-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+        }
+
+        .products-table th,
+        .products-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .products-table th {
+            background-color: #003366;
+            color: #fff;
+        }
+
+        .products-table tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .product-card {
+            border: 1px solid #eee;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .product-card-content {
+            padding: 20px;
+        }
+
+        .product-card h3 {
+            color: #9b59b6;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .product-card p {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .product-card .btn {
+            display: inline-block;
+            background: #9b59b6;
+            color: #fff;
+            padding: 8px 20px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 14px;
+            transition: background 0.3s;
+        }
+
+        .product-card .btn:hover {
+            background: #8e44ad;
+        }
+
+        .specs-section {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+
+        .specs-section h3 {
+            color: #9b59b6;
+            margin-bottom: 15px;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .spec-item {
+            background: #fff;
+            padding: 15px;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .spec-item strong {
+            display: block;
+            color: #9b59b6;
+            margin-bottom: 5px;
+        }
+
+        footer {
+            background-color: #003366;
+            color: #fff;
+            padding: 30px 0;
+            margin-top: 50px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .footer-links {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            color: #fff;
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        .copyright {
+            font-size: 13px;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 992px) {
+            .main {
+                flex-direction: column;
+            }
+            .sidebar {
+                width: 100%;
+            }
+            .features-grid,
+            .specs-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-container">
+        <header>
+            <div class="header-top">
+                <a href="index.html" class="company-name">Ningbo Fasteners International Group</a>
+                <div class="search-box">
+                    <input type="text" placeholder="Search...">
+                    <button>🔍</button>
+                </div>
+            </div>
+            <div class="tagline">Metal Products Specialists</div>
+        </header>
+    </div>
+
+    <nav>
+        <div class="top-container">
+            <ul class="nav-menu">
+                <li><a href="index.html">HOME</a></li>
+                <li class="active">
+                    <a href="products.html">PRODUCT ▾</a>
+                    <ul class="dropdown">
+                        <li><a href="aisi-duplex.html">AISI & Duplex Fasteners</a></li>
+                        <li><a href="copper-brass.html">Copper & Brass Fasteners</a></li>
+                        <li><a href="titanium.html">Ti & Ti Alloy Fasteners</a></li>
+                        <li><a href="rivet.html">Rivet</a></li>
+                        <li><a href="standard.html">Standard Fasteners</a></li>
+                    </ul>
+                </li>
+                <li><a href="about.html">ABOUT US</a></li>
+                <li><a href="advantages.html">ADVANTAGES</a></li>
+                <li><a href="equipments.html">EQUIPMENTS</a></li>
+                <li><a href="links.html">LINKS</a></li>
+                <li><a href="feedback.html">FEEDBACK</a></li>
+                <li><a href="contact.html">CONTACT US</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="main">
+        <div class="sidebar">
+            <div class="sidebar-title">Product Categories</div>
+            <ul class="category-list">
+                <li><a href="aisi-duplex.html">AISI & Duplex Fasteners</a></li>
+                <li><a href="copper-brass.html">Copper & Brass Fasteners</a></li>
+                <li><a href="titanium.html">Ti & Ti Alloy Fasteners</a></li>
+                <li><a href="rivet.html">Rivet</a></li>
+                <li><a href="standard.html">Standard Fasteners</a></li>
+                <li class="active"><a href="special.html">Special Fasteners</a></li>
+                <li><a href="stainless.html">Stainless Steel Fasteners</a></li>
+                <li><a href="carbon.html">Carbon Steel Fasteners</a></li>
+            </ul>
+        </div>
+
+        <div class="content">
+            <h1 class="page-title">Special Fasteners</h1>
+            
+            <div class="intro-section">
+                <h2>Overview</h2>
+                <p>Special fasteners are custom-engineered fastening solutions designed for unique applications where standard fasteners cannot meet specific requirements. Our engineering team specializes in designing and manufacturing special fasteners with non-standard dimensions, unique head styles, special materials, or specific performance characteristics.</p>
+                <p>With advanced CNC machining capabilities and extensive material expertise, we can produce special fasteners in small batches or large volumes to your exact specifications and drawings.</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>Customization Options</h3>
+                    <ul>
+                        <li>Non-standard dimensions</li>
+                        <li>Custom head designs</li>
+                        <li>Special thread forms</li>
+                        <li>Unique drive types</li>
+                        <li>Modified shank designs</li>
+                        <li>Custom surface finishes</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <h3>Capabilities</h3>
+                    <ul>
+                        <li>CNC precision machining</li>
+                        <li>Cold & hot forging</li>
+                        <li>Thread rolling & cutting</li>
+                        <li>Heat treatment</li>
+                        <li>Surface coating</li>
+                        <li>Prototype to production</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="specs-section">
+                <h3>Manufacturing Specifications</h3>
+                <div class="specs-grid">
+                    <div class="spec-item">
+                        <strong>Diameter Range</strong>
+                        M1 - M100
+                    </div>
+                    <div class="spec-item">
+                        <strong>Length Range</strong>
+                        3mm - 3000mm
+                    </div>
+                    <div class="spec-item">
+                        <strong>Tolerance</strong>
+                        ±0.01mm possible
+                    </div>
+                    <div class="spec-item">
+                        <strong>MOQ</strong>
+                        100 pieces
+                    </div>
+                    <div class="spec-item">
+                        <strong>Lead Time</strong>
+                        2-8 weeks
+                    </div>
+                    <div class="spec-item">
+                        <strong>Materials</strong>
+                        All alloys
+                    </div>
+                </div>
+            </div>
+
+            <h2 style="color: #003366; margin: 30px 0 20px;">Specialty Products</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="src_picture/a0.jpeg" alt="Custom Bolt">
+                    <div class="product-card-content">
+                        <h3>Custom Engineered Bolts</h3>
+                        <p>Non-standard bolts with special dimensions, reduced shanks, or unique head configurations. Designed to your exact specifications and performance requirements.</p>
+                        <a href="product-custom-bolt.html" class="btn">View Details</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="src_picture/a1.jpeg" alt="Security Fastener">
+                    <div class="product-card-content">
+                        <h3>Security Fasteners</h3>
+                        <p>Tamper-resistant screws and bolts with proprietary drive systems. Ideal for public installations, electronics, and high-security applications.</p>
+                        <a href="product-security.html" class="btn">View Details</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="src_picture/a2.jpeg" alt="Shoulder Screw">
+                    <div class="product-card-content">
+                        <h3>Precision Shoulder Screws</h3>
+                        <p>High-precision shoulder screws for pivot points and bearing surfaces. Tight tolerances on shoulder diameter and perpendicularity.</p>
+                        <a href="product-shoulder.html" class="btn">View Details</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="src_picture/a3.jpeg" alt="Weld Nut">
+                    <div class="product-card-content">
+                        <h3>Special Weld Nuts</h3>
+                        <p>Custom weld nuts with special projections, tabs, or geometries for specific welding processes and applications.</p>
+                        <a href="product-weld-nut.html" class="btn">View Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <h2 style="color: #003366; margin: 30px 0 20px;">Industries Served</h2>
+            <table class="products-table">
+                <thead>
+                    <tr>
+                        <th>Industry</th>
+                        <th>Special Requirements</th>
+                        <th>Examples</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Aerospace</td>
+                        <td>Ultra-lightweight, high strength</td>
+                        <td>Titanium specials</td>
+                    </tr>
+                    <tr>
+                        <td>Medical</td>
+                        <td>Biocompatible, sterile</td>
+                        <td>Implant screws</td>
+                    </tr>
+                    <tr>
+                        <td>Automotive</td>
+                        <td>High volume, specific torque</td>
+                        <td>Engine bolts</td>
+                    </tr>
+                    <tr>
+                        <td>Electronics</td>
+                        <td>Miniature, non-magnetic</td>
+                        <td>Micro screws</td>
+                    </tr>
+                    <tr>
+                        <td>Oil & Gas</td>
+                        <td>Corrosion resistant, high pressure</td>
+                        <td>Flange bolts</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="intro-section" style="margin-top: 40px;">
+                <h2>Custom Manufacturing Process</h2>
+                <p>Our special fastener development process ensures your requirements are met:</p>
+                <ul style="margin-left: 20px; color: #555;">
+                    <li><strong>Consultation:</strong> Understanding your application and requirements</li>
+                    <li><strong>Design:</strong> Engineering review and design optimization</li>
+                    <li><strong>Prototype:</strong> Sample production for testing and approval</li>
+                    <li><strong>Validation:</strong> Testing to verify performance</li>
+                    <li><strong>Production:</strong> Full-scale manufacturing with quality control</li>
+                    <li><strong>Support:</strong> Ongoing technical assistance</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="products.html">Products</a>
+                <a href="about.html">About Us</a>
+                <a href="contact.html">Contact Us</a>
+            </div>
+            <div class="copyright">
+                © 2025 Ningbo Fasteners International Group. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
