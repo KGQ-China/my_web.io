@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Useful Links - Ningbo Fasteners International Group</title>
+    <title>Useful Links - Ningbo Professional Fasteners International Group</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
         body { background-color: #f9f9f9; color: #333; line-height: 1.6; }
@@ -11,9 +11,95 @@
         header { padding: 20px 0; border-bottom: 1px solid #eee; }
         .header-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
         .company-name { font-size: 36px; font-weight: bold; color: #000; text-decoration: none; }
-        .search-box { position: relative; }
-        .search-box input { padding: 8px 30px 8px 10px; border: 1px solid #ccc; border-radius: 4px; width: 220px; }
-        .search-box button { position: absolute; right: 5px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; font-size: 16px; }
+        .search-box {
+            position: relative;
+            z-index: 10000;
+        }
+
+        .search-box input {
+            padding: 10px 40px 10px 12px;
+            border: 2px solid #ddd;
+            border-radius: 25px;
+            width: 280px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: #0066cc;
+        }
+
+        .search-box button {
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            transition: transform 0.2s;
+        }
+
+        .search-box button:hover {
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .search-suggestions {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            max-height: 400px;
+            overflow-y: auto;
+            z-index: 9999;
+            display: none;
+            margin-top: 5px;
+        }
+
+        .search-suggestions.show {
+            display: block;
+        }
+
+        .search-suggestion-item {
+            padding: 12px 15px;
+            cursor: pointer;
+            border-bottom: 1px solid #f0f0f0;
+            transition: background-color 0.2s;
+        }
+
+        .search-suggestion-item:last-child {
+            border-bottom: none;
+        }
+
+        .search-suggestion-item:hover {
+            background-color: #f5f8ff;
+        }
+
+        .search-suggestion-item .product-name {
+            font-weight: 600;
+            color: #333;
+            font-size: 14px;
+        }
+
+        .search-suggestion-item .product-category {
+            font-size: 12px;
+            color: #888;
+            margin-top: 3px;
+        }
+
+        .search-no-results {
+            padding: 20px;
+            text-align: center;
+            color: #888;
+            font-size: 14px;
+        }
+
         .tagline { color: #0066cc; font-size: 16px; margin-top: 5px; }
         nav { background-color: #003366; margin: 15px 0; }
         .nav-menu { display: flex; list-style: none; }
@@ -44,10 +130,11 @@
     <div class="top-container">
         <header>
             <div class="header-top">
-                <a href="index.html" class="company-name">Ningbo Fasteners International Group</a>
+                <a href="index.html" class="company-name">Ningbo Professional Fasteners International Group</a>
                 <div class="search-box">
-                    <input type="text" placeholder="Search...">
-                    <button>🔍</button>
+                    <input type="text" id="searchInput" placeholder="Search for bolts, nuts, screws, rivets...">
+                    <button id="searchBtn">🔍</button>
+                    <div id="searchSuggestions" class="search-suggestions"></div>
                 </div>
             </div>
             <div class="tagline">Metal Products Specialists</div>
@@ -143,8 +230,136 @@
                 <a href="about.html">About Us</a>
                 <a href="contact.html">Contact Us</a>
             </div>
-            <div class="copyright">© 2025 Ningbo Fasteners International Group. All Rights Reserved.</div>
+            <div class="copyright">© 2025 Ningbo Professional Fasteners International Group. All Rights Reserved.</div>
         </div>
     </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const products = [
+                { name: 'Stainless Steel Hex Bolt', category: 'Bolts', keywords: 'stainless steel hex bolt screw DIN 933 ISO 4016', url: 'product-stainless-hex-blox.html' },
+                { name: 'Brass Hex Nut', category: 'Nuts', keywords: 'brass hex nut copper alloy', url: 'product-brass-nut.html' },
+                { name: 'Titanium Alloy Screw', category: 'Screws', keywords: 'titanium alloy screw aerospace lightweight', url: 'product-titanium-screw.html' },
+                { name: 'Stainless Steel Flat Washer', category: 'Washers', keywords: 'flat washer stainless steel DIN 125', url: 'product-flat-washer.html' },
+                { name: 'Open End Rivet', category: 'Rivets', keywords: 'open end rivet pop rivet aluminum steel', url: 'product-open-rivet.html' },
+                { name: 'Duplex Steel Flange Nut', category: 'Nuts', keywords: 'duplex steel flange nut S32205 S31803', url: 'product-duplex-flange-nut.html' },
+                { name: 'Carriage Bolt', category: 'Bolts', keywords: 'carriage bolt round head square neck', url: 'product-carriage-bolt.html' },
+                { name: 'Hex Nut', category: 'Nuts', keywords: 'hex nut standard DIN 934', url: 'product-hex-nut.html' },
+                { name: 'Socket Head Cap Screw', category: 'Screws', keywords: 'socket cap screw allen key', url: 'product-socket-screw.html' },
+                { name: 'Structural Rivet', category: 'Rivets', keywords: 'structural rivet heavy duty', url: 'product-structural-rivet.html' },
+                { name: 'Stud Bolt', category: 'Bolts', keywords: 'stud bolt double end threaded rod', url: 'product-stud-bolt.html' },
+                { name: 'Titanium Bolt', category: 'Bolts', keywords: 'titanium bolt corrosion resistant', url: 'product-titanium-bolt.html' },
+                { name: 'Brass Bolt', category: 'Bolts', keywords: 'brass bolt copper electrical', url: 'product-brass-bolt.html' },
+                { name: 'Stainless Steel Nut', category: 'Nuts', keywords: 'stainless steel nut SS304 SS316', url: 'product-ss-nut.html' },
+                { name: 'Multi-Grip Rivet', category: 'Rivets', keywords: 'multi grip rivet versatile', url: 'product-multi-rivet.html' },
+                { name: 'Grade 8.8 Bolt', category: 'Bolts', keywords: 'grade 8.8 bolt high strength', url: 'product-grade88-bolt.html' },
+                { name: 'HDG Bolt', category: 'Bolts', keywords: 'hdg hot dip galvanized bolt zinc', url: 'product-hdg-bolt.html' },
+                { name: 'Custom Special Bolt', category: 'Special', keywords: 'custom special bolt made to order', url: 'product-custom-bolt.html' },
+                { name: 'Duplex Steel Bolt', category: 'Bolts', keywords: 'duplex steel bolt 2205 2507', url: 'product-duplex-bolt.html' },
+                { name: 'Super Nut', category: 'Nuts', keywords: 'super nut lock nut prevailing torque', url: 'product-super-nut.html' },
+                { name: 'Titanium Medical Screw', category: 'Medical', keywords: 'titanium medical screw implant', url: 'product-titanium-medical.html' },
+                { name: 'Titanium Nut', category: 'Nuts', keywords: 'titanium nut light weight', url: 'product-titanium-nut.html' },
+                { name: 'Titanium Washer', category: 'Washers', keywords: 'titanium washer', url: 'product-titanium-washer.html' },
+                { name: 'Weld Nut', category: 'Nuts', keywords: 'weld nut spot weld projection', url: 'product-weld-nut.html' },
+                { name: 'Security Screw', category: 'Screws', keywords: 'security screw tamper proof', url: 'product-security.html' },
+                { name: 'Shoulder Screw', category: 'Screws', keywords: 'shoulder screw precision shoulder bolt', url: 'product-shoulder.html' },
+                { name: 'SS304 Bolt', category: 'Bolts', keywords: 'ss304 bolt stainless steel 304', url: 'product-ss304-bolt.html' },
+                { name: 'SS316 Screw', category: 'Screws', keywords: 'ss316 screw stainless steel 316 marine', url: 'product-ss316-screw.html' },
+                { name: 'Stainless Steel Washer', category: 'Washers', keywords: 'stainless steel washer SS washer', url: 'product-ss-washer.html' },
+                { name: 'Stainless Steel Rivet', category: 'Rivets', keywords: 'stainless steel rivet SS rivet', url: 'product-ss-rivet.html' },
+                { name: 'Copper Screw', category: 'Screws', keywords: 'copper screw brass screw', url: 'product-copper-screw.html' },
+                { name: 'Brass Washer', category: 'Washers', keywords: 'brass washer copper washer', url: 'product-brass-washer.html' },
+                { name: 'Aluminum Rivet', category: 'Rivets', keywords: 'aluminum rivet pop rivet', url: 'product-al-rivet.html' },
+                { name: 'Duplex Steel Washer', category: 'Washers', keywords: 'duplex steel washer', url: 'product-duplex-washer.html' },
+                { name: 'Grade 12.9 Screw', category: 'Screws', keywords: 'grade 12.9 screw high strength alloy steel', url: 'product-grade129-screw.html' }
+            ];
+
+            const searchInput = document.getElementById('searchInput');
+            const searchBtn = document.getElementById('searchBtn');
+            const searchSuggestions = document.getElementById('searchSuggestions');
+
+            let searchTimeout;
+
+            function debounce(func, wait) {
+                return function executedFunction(...args) {
+                    clearTimeout(searchTimeout);
+                    searchTimeout = setTimeout(() => func.apply(this, args), wait);
+                };
+            }
+
+            function searchProducts(query) {
+                if (!query || query.length < 1) {
+                    searchSuggestions.classList.remove('show');
+                    return;
+                }
+
+                const lowerQuery = query.toLowerCase().trim();
+                const terms = lowerQuery.split(/\s+/);
+
+                const results = products.filter(product => {
+                    const searchText = (product.name + ' ' + product.category + ' ' + product.keywords).toLowerCase();
+                    return terms.every(term => searchText.includes(term));
+                });
+
+                displaySuggestions(results, query);
+            }
+
+            function displaySuggestions(results, query) {
+                searchSuggestions.innerHTML = '';
+
+                if (results.length === 0) {
+                    searchSuggestions.innerHTML = '<div class="search-no-results">No products found. Try different keywords.</div>';
+                } else {
+                    results.forEach(product => {
+                        const item = document.createElement('div');
+                        item.className = 'search-suggestion-item';
+                        item.innerHTML = `
+                            <div class="product-name">${highlightText(product.name, query)}</div>
+                            <div class="product-category">${product.category}</div>
+                        `;
+                        item.addEventListener('click', () => {
+                            window.location.href = product.url;
+                        });
+                        searchSuggestions.appendChild(item);
+                    });
+                }
+
+                searchSuggestions.classList.add('show');
+            }
+
+            function highlightText(text, query) {
+                if (!query) return text;
+                const regex = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+                return text.replace(regex, '<strong style="color: #0066cc;">$1</strong>');
+            }
+
+            searchInput.addEventListener('input', debounce((e) => {
+                searchProducts(e.target.value);
+            }, 200));
+
+            searchInput.addEventListener('focus', () => {
+                if (searchInput.value.length > 0) {
+                    searchProducts(searchInput.value);
+                }
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!searchInput.contains(e.target) && !searchSuggestions.contains(e.target)) {
+                    searchSuggestions.classList.remove('show');
+                }
+            });
+
+            searchBtn.addEventListener('click', () => {
+                if (searchInput.value.trim()) {
+                    searchProducts(searchInput.value);
+                }
+            });
+
+            searchInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter' && searchInput.value.trim()) {
+                    searchProducts(searchInput.value);
+                }
+            });
+        });
+    </script>
 </body>
 </html>
