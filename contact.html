@@ -199,10 +199,10 @@
                 <p class="subtitle">Send us a message and we'll get back to you soon.</p>
                 
                 <div id="successMessage" class="success-message">
-                    ✓ Message sent successfully! We'll get back to you soon.
+                    ✓ Opening your email client... Please send the email.
                 </div>
 
-                <form>
+                <form action="mailto:sales02@ningboprofastener.com?subject=Inquiry from Website" method="POST" enctype="text/plain">
                     <div class="form-group">
                         <label for="name">Your Name *</label>
                         <input type="text" id="name" name="name" required>
@@ -292,13 +292,13 @@
 
             if (form && successMessage) {
                 form.addEventListener('submit', function(e) {
-                    e.preventDefault(); // Prevent actual form submission
-
-                    // Show success message
+                    // Show success message briefly before mail client opens
                     successMessage.classList.add('show');
 
                     // Reset form
-                    form.reset();
+                    setTimeout(function() {
+                        form.reset();
+                    }, 100);
 
                     // Hide message after 5 seconds
                     setTimeout(function() {
